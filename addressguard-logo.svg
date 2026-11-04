@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#111c2e" />
+      <stop offset="70%" stop-color="#070a10" />
+      <stop offset="100%" stop-color="#04060a" />
+    </radialGradient>
+
+    <!-- Shield Outer Gradient -->
+    <linearGradient id="shield-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2dd4bf" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <!-- Shield Fill Gradient -->
+    <linearGradient id="shield-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Inner Core Glow -->
+    <linearGradient id="core-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="512" height="512" rx="100" fill="url(#bg-glow)" />
+
+  <!-- Background Ambient Cyber Circle -->
+  <circle cx="256" cy="256" r="190" fill="none" stroke="#14b8a6" stroke-width="1.5" stroke-opacity="0.15" stroke-dasharray="8 6" />
+  <circle cx="256" cy="256" r="215" fill="none" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.1" />
+
+  <!-- Outer Protective Shield with Glow -->
+  <path d="M 256,90 
+           C 345,90 395,125 395,195 
+           C 395,295 320,375 256,425 
+           C 192,375 117,295 117,195 
+           C 117,125 167,90 256,90 Z" 
+        fill="url(#shield-fill)" 
+        stroke="url(#shield-stroke)" 
+        stroke-width="10" 
+        filter="url(#neon-glow)" />
+
+  <!-- Inner Geometric Bevel -->
+  <path d="M 256,120 
+           C 325,120 365,145 365,205 
+           C 365,285 305,350 256,390 
+           C 207,350 147,285 147,205 
+           C 147,145 187,120 256,120 Z" 
+        fill="none" 
+        stroke="#1e293b" 
+        stroke-width="3" />
+
+  <!-- Digital Address Nodes / Hexagon Core Pattern -->
+  <polygon points="256,170 305,198 305,254 256,282 207,254 207,198" 
+           fill="#0f2b38" 
+           fill-opacity="0.6" 
+           stroke="url(#core-glow)" 
+           stroke-width="3.5" />
+
+  <!-- Center Verified Key / Shield Lock Checkmark -->
+  <path d="M 225,240 L 246,261 L 290,215" 
+        fill="none" 
+        stroke="#2dd4bf" 
+        stroke-width="10" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        filter="url(#neon-glow)" />
+
+  <!-- Subtle Microchip Connection Pins -->
+  <line x1="256" y1="282" x2="256" y2="340" stroke="#14b8a6" stroke-width="3.5" stroke-linecap="round" />
+  <circle cx="256" cy="342" r="5" fill="#2dd4bf" />
+
+  <line x1="207" y1="226" x2="175" y2="226" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="173" cy="226" r="3.5" fill="#06b6d4" />
+
+  <line x1="305" y1="226" x2="337" y2="226" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="339" cy="226" r="3.5" fill="#06b6d4" />
+</svg>
