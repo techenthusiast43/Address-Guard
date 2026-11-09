@@ -53,6 +53,21 @@ module.exports = {
       accounts,
     },
   },
+  etherscan: {
+    apiKey: {
+      botChain: "empty",
+    },
+    customChains: [
+      {
+        network: "botChain",
+        chainId: 677,
+        urls: {
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
+        },
+      },
+    ],
+  },
   paths: {
     sources: "./contracts",
     tests: "./test",
