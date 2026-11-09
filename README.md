@@ -4,9 +4,8 @@
 
 ---
 
-## 🌐 Network Parameters
+## 🌐 Network Parameters (BOT Chain)
 
-### 🚀 BOT Chain Mainnet
 | Parameter | Value |
 | :--- | :--- |
 | **Network Name** | **BOT Chain** |
@@ -15,15 +14,7 @@
 | **Native Token** | `BOT` (18 Decimals) |
 | **Total Supply** | 150 Million |
 | **Block Explorer** | [https://scan.botchain.ai/](https://scan.botchain.ai/) |
-| **Mainnet Contract** | [`0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa) |
-
-### 🧪 BOT Chain Testnet (Bohr)
-| Parameter | Value |
-| :--- | :--- |
-| **Chain ID** | `968` |
-| **RPC URL** | `https://rpc.bohr.life` |
-| **Block Explorer** | [https://scan.bohr.life/](https://scan.bohr.life/) |
-| **Testnet Contract** | [`0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB`](https://scan.bohr.life/address/0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB) |
+| **Deployed Contract** | [`0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa) |
 
 ---
 
@@ -55,8 +46,8 @@ address-guard/
 ├── test/
 │   └── AddressGuard.test.js       # Hardhat test suite (13/13 passing)
 ├── scripts/
-│   └── deploy.js                  # Deployment script for BOT Chain Mainnet & Testnet
-├── hardhat.config.js              # Hardhat configuration (Chain ID: 677 & 968)
+│   └── deploy.js                  # Deployment script for BOT Chain
+├── hardhat.config.js              # Hardhat configuration (Chain ID: 677)
 ├── package.json                   # Root dependencies (Hardhat, Toolbox)
 ├── frontend/
 │   ├── index.html
@@ -68,7 +59,7 @@ address-guard/
 │       ├── main.jsx               # App entrypoint (Wagmi + React Query)
 │       ├── index.css              # Dark theme styling & scrollbars
 │       ├── config/
-│       │   ├── chain.js           # BOT Chain Mainnet (677) & Testnet (968)
+│       │   ├── chain.js           # BOT Chain (Chain ID: 677) definition
 │       │   └── web3.js            # Reown AppKit & WagmiAdapter setup
 │       ├── contracts/
 │       │   └── AddressGuard.json  # Mainnet Contract ABI & live address
@@ -95,10 +86,10 @@ address-guard/
 npx hardhat test
 ```
 
-### 2. Deploy to BOT Chain Mainnet
+### 2. Deploy to BOT Chain
 
 ```bash
-npx hardhat run scripts/deploy.js --network botChainMainnet
+npx hardhat run scripts/deploy.js --network botChain
 ```
 
 ### 3. Run the Frontend

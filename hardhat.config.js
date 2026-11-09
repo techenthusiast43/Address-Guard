@@ -46,16 +46,6 @@ module.exports = {
       chainId: Number(process.env.BOT_CHAIN_ID) || 677,
       accounts,
     },
-    botChainMainnet: {
-      url: "https://rpc.botchain.ai",
-      chainId: 677,
-      accounts,
-    },
-    botChainTestnet: {
-      url: "https://rpc.bohr.life",
-      chainId: 968,
-      accounts,
-    },
   },
   paths: {
     sources: "./contracts",

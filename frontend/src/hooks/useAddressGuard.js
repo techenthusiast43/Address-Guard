@@ -9,7 +9,7 @@ import {
 } from 'wagmi';
 import { isAddress, getAddress } from 'viem';
 import contractData from '../contracts/AddressGuard.json';
-import { botChainMainnet, bohrTestnet, defaultChain } from '../config/chain';
+import { botChain } from '../config/chain';
 
 const STORAGE_KEY_CONTRACT_ADDR = 'addressguard_contract_address';
 
@@ -35,10 +35,8 @@ export function useAddressGuard() {
     }
   };
 
-  const isMainnet = chainId === botChainMainnet.id;
-  const isTestnet = chainId === bohrTestnet.id;
-  const isCorrectNetwork = isMainnet || isTestnet;
-  const explorerUrl = isTestnet ? 'https://scan.bohr.life' : 'https://scan.botchain.ai';
+  const isCorrectNetwork = chainId === botChain.id;
+  const explorerUrl = 'https://scan.botchain.ai';
 
   // Wagmi contract write
   const {
@@ -243,10 +241,9 @@ export function useAddressGuard() {
     userAddress,
     isConnected,
     isCorrectNetwork,
-    isMainnet,
     chainId,
     explorerUrl,
-    switchChain: () => switchChain?.({ chainId: botChainMainnet.id }),
+    switchChain: () => switchChain?.({ chainId: botChain.id }),
     contractAddress,
     setContractAddress,
     addresses,

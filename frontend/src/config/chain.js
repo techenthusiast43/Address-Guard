@@ -8,7 +8,7 @@ import { defineChain } from 'viem';
  * Total Supply: 150 Million
  * Explorer: https://scan.botchain.ai
  */
-export const botChainMainnet = defineChain({
+export const botChain = defineChain({
   id: 677,
   name: 'BOT Chain',
   nativeCurrency: {
@@ -30,38 +30,6 @@ export const botChainMainnet = defineChain({
       url: 'https://scan.botchain.ai',
     },
   },
-  testnet: false,
 });
 
-/**
- * BOT Chain Testnet (Bohr)
- * Chain ID: 968
- * RPC: https://rpc.bohr.life
- */
-export const bohrTestnet = defineChain({
-  id: 968,
-  name: 'BOT Chain Testnet',
-  nativeCurrency: {
-    name: 'BOT',
-    symbol: 'BOT',
-    decimals: 18,
-  },
-  rpcUrls: {
-    default: {
-      http: ['https://rpc.bohr.life'],
-    },
-    public: {
-      http: ['https://rpc.bohr.life'],
-    },
-  },
-  blockExplorers: {
-    default: {
-      name: 'BohrScan',
-      url: 'https://scan.bohr.life',
-    },
-  },
-  testnet: true,
-});
-
-// Primary default network is Mainnet
-export const defaultChain = botChainMainnet;
+export const defaultChain = botChain;

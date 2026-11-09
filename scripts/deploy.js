@@ -4,14 +4,11 @@ const path = require("path");
 
 async function main() {
   const chainId = Number(hre.network.config.chainId) || 677;
-  const isMainnet = chainId === 677;
-  const explorerUrl = isMainnet
-    ? "https://scan.botchain.ai"
-    : "https://scan.bohr.life";
+  const explorerUrl = "https://scan.botchain.ai";
 
   console.log("====================================================");
   console.log("Deploying AddressGuard to:", hre.network.name);
-  console.log("Target Chain ID:", chainId, isMainnet ? "(BOT Chain MAINNET)" : "(Testnet)");
+  console.log("Chain ID:", chainId, "(BOT Chain)");
   console.log("Explorer:", explorerUrl);
   console.log("====================================================");
 

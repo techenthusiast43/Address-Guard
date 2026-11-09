@@ -182,22 +182,18 @@ export default function App() {
           <div className="flex items-center gap-2">
             <span className="font-semibold text-slate-400">AddressGuard</span>
             <span>&bull;</span>
-            <span>
-              {isMainnet
-                ? 'BOT Chain Mainnet (Chain ID: 677)'
-                : 'BOT Chain Testnet (Chain ID: 968)'}
-            </span>
+            <span>BOT Chain (Chain ID: 677)</span>
           </div>
           <div className="flex items-center gap-4">
             <span className="font-mono text-slate-400">Total Supply: 150M BOT</span>
             <span>&bull;</span>
             <a
-              href={explorerUrl || "https://scan.botchain.ai"}
+              href="https://scan.botchain.ai"
               target="_blank"
               rel="noreferrer"
               className="text-teal-400 hover:text-teal-300 transition flex items-center gap-1"
             >
-              <span>{isMainnet ? 'BotScan Explorer' : 'BohrScan Explorer'}</span>
+              <span>BotScan Explorer</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>

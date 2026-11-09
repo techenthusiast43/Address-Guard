@@ -3,10 +3,9 @@
 
 **Version:** 1.1.0  
 **Date:** November 2026  
-**Mainnet:** BOT Chain (Chain ID: 677)  
-**Mainnet Contract:** `0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`  
-**Mainnet Explorer:** [https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa)  
-**Testnet Contract:** `0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB` (Chain ID: 968)  
+**Network:** BOT Chain (Chain ID: 677)  
+**Contract Address:** `0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`  
+**Explorer:** [https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa)  
 **GitHub:** [https://github.com/techenthusiast43/Address-Guard](https://github.com/techenthusiast43/Address-Guard)  
 
 ---
@@ -142,19 +141,19 @@ Instead of using generic string reverts (`require(cond, "Long revert string")`),
 
 ## 4. BOT Chain Network Integration
 
-AddressGuard is deployed on the **BOT Chain** ecosystem (Bohr network).
+AddressGuard is deployed directly on the **BOT Chain** network.
 
 ### Technical Parameters
 
-| Attribute | Mainnet Specification | Testnet Specification |
-| :--- | :--- | :--- |
-| **Network Name** | BOT Chain | BOT Chain Testnet (Bohr) |
-| **Chain ID** | **`677`** | `968` |
-| **RPC Endpoint** | `https://rpc.botchain.ai` | `https://rpc.bohr.life` |
-| **Native Currency** | `BOT` (18 decimals) | `BOT` (18 decimals) |
-| **Total Token Supply** | 150,000,000 BOT | 150,000,000 BOT |
-| **Block Explorer** | [https://scan.botchain.ai/](https://scan.botchain.ai/) | [https://scan.bohr.life/](https://scan.bohr.life/) |
-| **Deployed Contract** | [`0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa) | [`0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB`](https://scan.bohr.life/address/0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB) |
+| Attribute | Specification |
+| :--- | :--- |
+| **Network Name** | **BOT Chain** |
+| **Chain ID** | **`677`** |
+| **RPC Endpoint** | `https://rpc.botchain.ai` |
+| **Native Currency** | `BOT` (18 decimals) |
+| **Total Token Supply** | 150,000,000 BOT |
+| **Block Explorer** | [https://scan.botchain.ai/](https://scan.botchain.ai/) |
+| **Deployed Contract** | [`0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa) |
 
 BOT Chain offers high transaction throughput and sub-second block times, making micro-state updates (such as label changes and contact additions) instantaneous and negligible in transaction cost.
 
@@ -189,19 +188,19 @@ The frontend interface is engineered for high performance, zero custodial risk, 
 ```
 2026 Q4                      2027 Q1                      2027 Q2                      2027 Q3
 +----------------------+     +----------------------+     +----------------------+     +----------------------+
-| Core Protocol &      | --> | Mainnet Launch &     | --> | Browser Extension    | --> | Multi-Sig & Social   |
-| BOT Chain Testnet    |     | Security Audit       |     | Pre-Flight Intercept |     | Verification Layer   |
+| Core Protocol &      | --> | BotScan Verification | --> | Browser Extension    | --> | Multi-Sig & Social   |
+| BOT Chain Mainnet    |     | & Ecosystem Growth   |     | Pre-Flight Intercept |     | Verification Layer   |
 | (COMPLETED)          |     | (IN PROGRESS)        |     | (PLANNED)            |     | (PLANNED)            |
 +----------------------+     +----------------------+     +----------------------+     +----------------------+
 ```
 
-### Phase 1: Core Protocol & Testnet Launch (Completed)
+### Phase 1: Core Protocol & Mainnet Launch (Completed)
 - Implementation and testing of `AddressGuard.sol` (13/13 unit test coverage).
-- Deployment to BOT Chain Testnet (`0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB`).
+- Deployment to BOT Chain Mainnet (`0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`).
 - Full responsive dApp dashboard with Reown AppKit and Wagmi v2.
 
-### Phase 2: Mainnet Launch & Ecosystem Growth (Current)
-- Contract verification on BohrScan.
+### Phase 2: BotScan Verification & Ecosystem Growth (Current)
+- Contract verification on BotScan.
 - Partnership integration with BOT Chain developer programs.
 - Public security verification and formal verification audit.
 
@@ -223,7 +222,6 @@ AddressGuard bridges the critical gap between raw cryptographic addressing and h
 
 ## Repository & References
 - **Source Code:** [https://github.com/techenthusiast43/Address-Guard](https://github.com/techenthusiast43/Address-Guard)
-- **BOT Chain Official:** [https://bohr.life/](https://bohr.life/)
-- **BohrScan Block Explorer:** [https://scan.bohr.life/](https://scan.bohr.life/)
+- **BOT Chain Official:** [https://botchain.ai/](https://botchain.ai/)
+- **BotScan Block Explorer:** [https://scan.botchain.ai/](https://scan.botchain.ai/)
 - **EIP-55: Mixed-case checksum address encoding:** [https://eips.ethereum.org/EIPS/eip-55](https://eips.ethereum.org/EIPS/eip-55)
-

@@ -64,9 +64,7 @@ export default function Header({
               className={`w-2 h-2 rounded-full ${
                 isConnected
                   ? isCorrectNetwork
-                    ? isMainnet
-                      ? 'bg-emerald-400 shadow-sm shadow-emerald-400 ring-2 ring-emerald-500/20'
-                      : 'bg-teal-400'
+                    ? 'bg-emerald-400 shadow-sm shadow-emerald-400 ring-2 ring-emerald-500/20'
                     : 'bg-amber-400 animate-pulse'
                   : 'bg-slate-500'
               }`}
@@ -74,11 +72,9 @@ export default function Header({
             <span className="text-slate-300 font-mono font-medium">
               {isConnected
                 ? isCorrectNetwork
-                  ? isMainnet
-                    ? 'BOT Mainnet (677)'
-                    : 'BOT Testnet (968)'
+                  ? 'BOT Chain (677)'
                   : 'Wrong Network'
-                : 'BOT Mainnet (677)'}
+                : 'BOT Chain (677)'}
             </span>
           </div>
 

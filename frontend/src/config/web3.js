@@ -1,7 +1,7 @@
 import { createAppKit } from '@reown/appkit/react';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { QueryClient } from '@tanstack/react-query';
-import { botChainMainnet, bohrTestnet, defaultChain } from './chain';
+import { botChain } from './chain';
 
 // Get or fallback to a standard public Reown projectId
 const rawProjectId = import.meta.env.VITE_REOWN_PROJECT_ID;
@@ -17,8 +17,7 @@ export const metadata = {
   icons: ['https://scan.botchain.ai/favicon.ico'],
 };
 
-// Mainnet is primary default, testnet is available
-export const networks = [botChainMainnet, bohrTestnet];
+export const networks = [botChain];
 
 // Initialize Wagmi Adapter
 export const wagmiAdapter = new WagmiAdapter({
@@ -31,7 +30,7 @@ export const wagmiAdapter = new WagmiAdapter({
 export const modal = createAppKit({
   adapters: [wagmiAdapter],
   networks,
-  defaultNetwork: botChainMainnet,
+  defaultNetwork: botChain,
   projectId,
   metadata,
   themeMode: 'dark',
