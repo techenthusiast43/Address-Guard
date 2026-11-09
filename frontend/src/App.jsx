@@ -6,7 +6,16 @@ import AddressList from './components/AddressList';
 import AddAddressModal from './components/AddAddressModal';
 import TxNotification from './components/TxNotification';
 import { useAddressGuard } from './hooks/useAddressGuard';
-import { Shield, ShieldAlert, Sparkles, ExternalLink, BookMarked } from 'lucide-react';
+import {
+  Shield,
+  ShieldAlert,
+  Sparkles,
+  ExternalLink,
+  Globe,
+  Cpu,
+  Layers,
+  CheckCircle2,
+} from 'lucide-react';
 import { useAppKit } from '@reown/appkit/react';
 
 export default function App() {
@@ -88,13 +97,24 @@ export default function App() {
                   Connect MetaMask / EVM Wallet
                 </button>
                 <a
-                  href={explorerUrl || "https://scan.botchain.ai"}
+                  href="https://botchain.ai"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700/80 flex items-center justify-center gap-2 transition"
                 >
-                  <span>Explore BOT Chain</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <Globe className="w-3.5 h-3.5 text-teal-400" />
+                  <span>BOT Chain Website</span>
+                  <ExternalLink className="w-3 h-3 text-slate-500" />
+                </a>
+                <a
+                  href="https://scan.botchain.ai"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700/80 flex items-center justify-center gap-2 transition"
+                >
+                  <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>BOT Chain Explorer</span>
+                  <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
               </div>
             </div>
@@ -158,6 +178,65 @@ export default function App() {
             </section>
           </>
         )}
+
+        {/* BOT Chain Ecosystem Showcase Section */}
+        <section className="rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-slate-950 p-6 sm:p-8 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative">
+            <div className="space-y-2 max-w-2xl">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400">
+                  <Layers className="w-4 h-4" />
+                </span>
+                <span className="text-xs font-semibold tracking-wider uppercase text-teal-400">
+                  BOT Chain Ecosystem Project
+                </span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold text-white">
+                Powered natively by BOT Chain
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                AddressGuard leverages BOT Chain's high-throughput, EVM-compatible infrastructure (Chain ID: 677) to execute fast, gas-efficient address verification and decentralized address book management.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://botchain.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-white text-xs font-semibold border border-slate-700 transition shadow-sm"
+              >
+                <Globe className="w-4 h-4 text-teal-400" />
+                <span>BOT Chain Website</span>
+                <ExternalLink className="w-3 h-3 text-slate-400" />
+              </a>
+
+              <a
+                href="https://scan.botchain.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 text-xs font-semibold border border-teal-500/30 transition shadow-sm"
+              >
+                <Cpu className="w-4 h-4 text-cyan-400" />
+                <span>BOT Chain Explorer</span>
+                <ExternalLink className="w-3 h-3 text-teal-400" />
+              </a>
+
+              <a
+                href="https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700 transition shadow-sm"
+              >
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>Verified Contract</span>
+                <ExternalLink className="w-3 h-3 text-slate-400" />
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Add Address Modal */}
@@ -176,26 +255,76 @@ export default function App() {
         explorerUrl={explorerUrl}
       />
 
-      {/* Footer */}
-      <footer className="mt-auto border-t border-slate-800/80 bg-slate-950 py-6 text-center text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-400">AddressGuard</span>
-            <span>&bull;</span>
-            <span>BOT Chain (Chain ID: 677)</span>
+      {/* Footer with BOT Chain branding and required ecosystem links */}
+      <footer className="mt-auto border-t border-slate-800/80 bg-slate-950 py-8 text-xs text-slate-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-slate-800/60">
+            {/* Left: Brand & Network */}
+            <div className="flex items-center gap-3">
+              <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-teal-500 to-cyan-400 flex items-center justify-center text-slate-950 font-bold shadow-md shadow-teal-500/20">
+                <Shield className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-white text-sm">AddressGuard</span>
+                  <span className="px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 text-[10px] font-mono border border-teal-500/20">
+                    BOT Chain (677)
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-500 mt-0.5">
+                  Decentralized Personal Trusted Address Manager &amp; Verification Protocol
+                </p>
+              </div>
+            </div>
+
+            {/* Right: Required BOT Chain Links & Explorer */}
+            <div className="flex flex-wrap items-center gap-6 text-xs">
+              <a
+                href="https://botchain.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-slate-300 hover:text-teal-400 transition font-medium"
+              >
+                <Globe className="w-3.5 h-3.5 text-teal-400" />
+                <span>BOT Chain Website</span>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </a>
+
+              <a
+                href="https://scan.botchain.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-slate-300 hover:text-cyan-400 transition font-medium"
+              >
+                <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                <span>BOT Chain Explorer</span>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </a>
+
+              <a
+                href="https://github.com/techenthusiast43/Address-Guard"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-slate-300 hover:text-white transition"
+              >
+                <span>GitHub Source</span>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </a>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="font-mono text-slate-400">Total Supply: 150M BOT</span>
-            <span>&bull;</span>
-            <a
-              href="https://scan.botchain.ai"
-              target="_blank"
-              rel="noreferrer"
-              className="text-teal-400 hover:text-teal-300 transition flex items-center gap-1"
-            >
-              <span>BotScan Explorer</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+
+          {/* Bottom Copyright & Token Specs */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+            <div>
+              &copy; {new Date().getFullYear()} AddressGuard. Built natively for the BOT Chain ecosystem.
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="font-mono">Native Token: BOT</span>
+              <span>&bull;</span>
+              <span className="font-mono">Total Supply: 150,000,000 BOT</span>
+              <span>&bull;</span>
+              <span className="font-mono">Chain ID: 677</span>
+            </div>
           </div>
         </div>
       </footer>
