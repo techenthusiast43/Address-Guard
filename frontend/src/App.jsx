@@ -11,8 +11,6 @@ import {
   ShieldAlert,
   Sparkles,
   ExternalLink,
-  Globe,
-  Cpu,
   Layers,
   CheckCircle2,
 } from 'lucide-react';
@@ -100,9 +98,13 @@ export default function App() {
                   href="https://botchain.ai"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700/80 flex items-center justify-center gap-2 transition"
+                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700/80 flex items-center justify-center gap-2 transition hover:border-teal-500/50"
                 >
-                  <Globe className="w-3.5 h-3.5 text-teal-400" />
+                  <img
+                    src="/botchain-logo.png"
+                    alt="BOT Chain Logo"
+                    className="w-4 h-4 rounded-full object-contain shrink-0"
+                  />
                   <span>BOT Chain Website</span>
                   <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
@@ -110,9 +112,13 @@ export default function App() {
                   href="https://scan.botchain.ai"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700/80 flex items-center justify-center gap-2 transition"
+                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700/80 flex items-center justify-center gap-2 transition hover:border-cyan-500/50"
                 >
-                  <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                  <img
+                    src="/botchain-logo.png"
+                    alt="BOT Chain Logo"
+                    className="w-4 h-4 rounded-full object-contain shrink-0"
+                  />
                   <span>BOT Chain Explorer</span>
                   <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
@@ -206,9 +212,13 @@ export default function App() {
                 href="https://botchain.ai"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-white text-xs font-semibold border border-slate-700 transition shadow-sm"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-white text-xs font-semibold border border-slate-700 transition shadow-sm hover:border-teal-500/50"
               >
-                <Globe className="w-4 h-4 text-teal-400" />
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  className="w-4 h-4 rounded-full object-contain shrink-0"
+                />
                 <span>BOT Chain Website</span>
                 <ExternalLink className="w-3 h-3 text-slate-400" />
               </a>
@@ -217,9 +227,13 @@ export default function App() {
                 href="https://scan.botchain.ai"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 text-xs font-semibold border border-teal-500/30 transition shadow-sm"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 text-xs font-semibold border border-teal-500/30 transition shadow-sm hover:border-teal-400/60"
               >
-                <Cpu className="w-4 h-4 text-cyan-400" />
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  className="w-4 h-4 rounded-full object-contain shrink-0"
+                />
                 <span>BOT Chain Explorer</span>
                 <ExternalLink className="w-3 h-3 text-teal-400" />
               </a>
@@ -230,7 +244,7 @@ export default function App() {
                 rel="noreferrer"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700 transition shadow-sm"
               >
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>Verified Contract</span>
                 <ExternalLink className="w-3 h-3 text-slate-400" />
               </a>
@@ -277,28 +291,36 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right: Required BOT Chain Links & Explorer */}
+            {/* Right: Required BOT Chain Links & Explorer with official logo at the front */}
             <div className="flex flex-wrap items-center gap-6 text-xs">
               <a
                 href="https://botchain.ai"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 text-slate-300 hover:text-teal-400 transition font-medium"
+                className="flex items-center gap-2 text-slate-300 hover:text-teal-400 transition font-medium group"
               >
-                <Globe className="w-3.5 h-3.5 text-teal-400" />
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  className="w-4 h-4 rounded-full object-contain shrink-0 group-hover:scale-110 transition-transform"
+                />
                 <span>BOT Chain Website</span>
-                <ExternalLink className="w-3 h-3 text-slate-500" />
+                <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-teal-400" />
               </a>
 
               <a
                 href="https://scan.botchain.ai"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 text-slate-300 hover:text-cyan-400 transition font-medium"
+                className="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition font-medium group"
               >
-                <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Logo"
+                  className="w-4 h-4 rounded-full object-contain shrink-0 group-hover:scale-110 transition-transform"
+                />
                 <span>BOT Chain Explorer</span>
-                <ExternalLink className="w-3 h-3 text-slate-500" />
+                <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-cyan-400" />
               </a>
 
               <a
