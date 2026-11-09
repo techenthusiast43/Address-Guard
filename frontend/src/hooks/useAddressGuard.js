@@ -145,8 +145,8 @@ export function useAddressGuard() {
       return await writeContractAsync({
         address: getAddress(contractAddress),
         abi: contractData.abi,
-        functionName: 'addTrustedAddress',
-        args: [getAddress(wallet), label.trim(), category],
+        functionName: 'addTrustedAddressWithCategory',
+        args: [getAddress(wallet), label.trim(), category || 'Personal'],
       });
     },
     [isConnected, contractAddress, writeContractAsync, resetWrite]
