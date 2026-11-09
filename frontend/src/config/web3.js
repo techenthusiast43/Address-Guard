@@ -1,7 +1,7 @@
 import { createAppKit } from '@reown/appkit/react';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { QueryClient } from '@tanstack/react-query';
-import { botChain } from './chain';
+import { botChain, localhostChain } from './chain';
 
 // Get or fallback to a standard public Reown projectId
 const rawProjectId = import.meta.env.VITE_REOWN_PROJECT_ID;
@@ -17,7 +17,8 @@ export const metadata = {
   icons: ['https://scan.botchain.ai/favicon.ico'],
 };
 
-export const networks = [botChain];
+// BOT Chain is default, Localhost is available for local testing
+export const networks = [botChain, localhostChain];
 
 // Initialize Wagmi Adapter
 export const wagmiAdapter = new WagmiAdapter({

@@ -32,4 +32,27 @@ export const botChain = defineChain({
   },
 });
 
+/**
+ * Localhost Testing Chain (Hardhat Node)
+ * Chain ID: 31337
+ * RPC: http://127.0.0.1:8545
+ */
+export const localhostChain = defineChain({
+  id: 31337,
+  name: 'Localhost (Hardhat)',
+  nativeCurrency: {
+    name: 'BOT',
+    symbol: 'BOT',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ['http://127.0.0.1:8545'],
+    },
+    public: {
+      http: ['http://127.0.0.1:8545'],
+    },
+  },
+});
+
 export const defaultChain = botChain;

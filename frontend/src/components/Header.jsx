@@ -61,18 +61,19 @@ export default function Header({
           {/* Network Indicator */}
           <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs">
             <span
-              className={`w-2 h-2 rounded-full ${
-                isConnected
-                  ? isCorrectNetwork
-                    ? 'bg-emerald-400 shadow-sm shadow-emerald-400 ring-2 ring-emerald-500/20'
-                    : 'bg-amber-400 animate-pulse'
-                  : 'bg-slate-500'
-              }`}
+              className={`w-2 h-2 rounded-full ${isConnected
+                ? isCorrectNetwork
+                  ? 'bg-emerald-400 shadow-sm shadow-emerald-400 ring-2 ring-emerald-500/20'
+                  : 'bg-amber-400 animate-pulse'
+                : 'bg-slate-500'
+                }`}
             />
             <span className="text-slate-300 font-mono font-medium">
               {isConnected
                 ? isCorrectNetwork
-                  ? 'BOT Chain (677)'
+                  ? chainId === 31337
+                    ? 'Localhost (31337)'
+                    : 'BOT Chain (677)'
                   : 'Wrong Network'
                 : 'BOT Chain (677)'}
             </span>

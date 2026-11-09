@@ -9,23 +9,39 @@ import {
 } from 'wagmi';
 import { isAddress, getAddress } from 'viem';
 import contractData from '../contracts/AddressGuard.json';
-import { botChain } from '../config/chain';
+import { botChain, localhostChain } from '../config/chain';
 
 const STORAGE_KEY_CONTRACT_ADDR = 'addressguard_contract_address';
+
+const NETWORK_CONTRACTS = {
+  677: '0xbC40237702cCA86cC09231c3951271e47DDCC1Aa',
+  31337: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+};
 
 export function useAddressGuard() {
   const { address: userAddress, isConnected } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
 
-  // Allow custom contract address stored in localStorage or fallback to default
+  const isLocalhost = chainId === localhostChain.id;
+  const isCorrectNetwork = chainId === botChain.id || isLocalhost;
+  const explorerUrl = isLocalhost ? '' : 'https://scan.botchain.ai';
+
+  // Automatically bind contract address to active network (or localStorage override)
   const [contractAddress, setContractAddressState] = useState(() => {
     return (
       localStorage.getItem(STORAGE_KEY_CONTRACT_ADDR) ||
-      import.meta.env.VITE_CONTRACT_ADDRESS ||
+      NETWORK_CONTRACTS[chainId] ||
       contractData.address
     );
   });
+
+  useEffect(() => {
+    const custom = localStorage.getItem(STORAGE_KEY_CONTRACT_ADDR);
+    if (!custom && NETWORK_CONTRACTS[chainId]) {
+      setContractAddressState(NETWORK_CONTRACTS[chainId]);
+    }
+  }, [chainId]);
 
   const setContractAddress = (newAddr) => {
     if (isAddress(newAddr)) {
@@ -34,9 +50,6 @@ export function useAddressGuard() {
       localStorage.setItem(STORAGE_KEY_CONTRACT_ADDR, formatted);
     }
   };
-
-  const isCorrectNetwork = chainId === botChain.id;
-  const explorerUrl = 'https://scan.botchain.ai';
 
   // Wagmi contract write
   const {

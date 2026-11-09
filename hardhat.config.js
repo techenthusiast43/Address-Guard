@@ -40,7 +40,13 @@ module.exports = {
     },
   },
   networks: {
-    hardhat: {},
+    hardhat: {
+      chainId: 31337,
+    },
+    localhost: {
+      url: "http://127.0.0.1:8545",
+      chainId: 31337,
+    },
     botChain: {
       url: process.env.BOT_RPC_URL || "https://rpc.botchain.ai",
       chainId: Number(process.env.BOT_CHAIN_ID) || 677,
