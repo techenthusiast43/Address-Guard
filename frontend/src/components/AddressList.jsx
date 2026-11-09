@@ -29,6 +29,7 @@ export default function AddressList({
   activeCategory,
   onSelectCategory,
   isWritePending,
+  explorerUrl = 'https://scan.botchain.ai',
 }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedAddress, setCopiedAddress] = useState(null);
@@ -238,11 +239,11 @@ export default function AddressList({
 
                       {/* Explorer Link */}
                       <a
-                        href={`https://scan.bohr.life/address/${item.wallet}`}
+                        href={`${explorerUrl}/address/${item.wallet}`}
                         target="_blank"
                         rel="noreferrer"
                         className="p-1 text-slate-400 hover:text-white rounded hover:bg-slate-800 transition"
-                        title="View on BohrScan"
+                        title="View on Explorer"
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>

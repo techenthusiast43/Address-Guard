@@ -1,6 +1,7 @@
 {
-  "address": "0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB",
-  "chainId": 968,
+  "address": "0xbC40237702cCA86cC09231c3951271e47DDCC1Aa",
+  "chainId": 677,
+  "explorer": "https://scan.botchain.ai",
   "abi": [
     {
       "inputs": [

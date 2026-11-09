@@ -1,22 +1,24 @@
 import { createAppKit } from '@reown/appkit/react';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { QueryClient } from '@tanstack/react-query';
-import { bohrTestnet } from './chain';
+import { botChainMainnet, bohrTestnet, defaultChain } from './chain';
 
 // Get or fallback to a standard public Reown projectId
 const rawProjectId = import.meta.env.VITE_REOWN_PROJECT_ID;
-export const projectId = (rawProjectId && rawProjectId.trim() !== '') 
-  ? rawProjectId.trim() 
-  : 'b56e18d47c72ab683b10814fe9495694';
+export const projectId =
+  rawProjectId && rawProjectId.trim() !== ''
+    ? rawProjectId.trim()
+    : 'b56e18d47c72ab683b10814fe9495694';
 
 export const metadata = {
   name: 'AddressGuard',
   description: 'Personal Trusted Wallet Address Manager on BOT Chain',
   url: 'https://addressguard.local',
-  icons: ['https://scan.bohr.life/favicon.ico'],
+  icons: ['https://scan.botchain.ai/favicon.ico'],
 };
 
-export const networks = [bohrTestnet];
+// Mainnet is primary default, testnet is available
+export const networks = [botChainMainnet, bohrTestnet];
 
 // Initialize Wagmi Adapter
 export const wagmiAdapter = new WagmiAdapter({
@@ -29,6 +31,7 @@ export const wagmiAdapter = new WagmiAdapter({
 export const modal = createAppKit({
   adapters: [wagmiAdapter],
   networks,
+  defaultNetwork: botChainMainnet,
   projectId,
   metadata,
   themeMode: 'dark',
@@ -44,4 +47,3 @@ export const modal = createAppKit({
 });
 
 export const queryClient = new QueryClient();
-

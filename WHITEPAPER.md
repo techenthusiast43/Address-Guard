@@ -1,12 +1,13 @@
 # AddressGuard Whitepaper
 ### Decentralized Address Verification & Non-Custodial Address Management Protocol on BOT Chain
 
-**Version:** 1.0.0  
+**Version:** 1.1.0  
 **Date:** November 2026  
-**Network:** BOT Chain Testnet (Bohr) — Chain ID: 968  
-**Contract Address:** `0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB`  
+**Mainnet:** BOT Chain (Chain ID: 677)  
+**Mainnet Contract:** `0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`  
+**Mainnet Explorer:** [https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa)  
+**Testnet Contract:** `0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB` (Chain ID: 968)  
 **GitHub:** [https://github.com/techenthusiast43/Address-Guard](https://github.com/techenthusiast43/Address-Guard)  
-**Explorer:** [https://scan.bohr.life/](https://scan.bohr.life/)  
 
 ---
 
@@ -145,15 +146,15 @@ AddressGuard is deployed on the **BOT Chain** ecosystem (Bohr network).
 
 ### Technical Parameters
 
-| Attribute | Specification |
-| :--- | :--- |
-| **Network Name** | BOT Chain Testnet (Bohr) |
-| **Chain ID** | `968` |
-| **RPC Endpoint** | `https://rpc.bohr.life` |
-| **Native Currency** | `BOT` (18 decimals) |
-| **Total Token Supply** | 150,000,000 BOT |
-| **Block Explorer** | [https://scan.bohr.life/](https://scan.bohr.life/) |
-| **Deployed Contract** | `0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB` |
+| Attribute | Mainnet Specification | Testnet Specification |
+| :--- | :--- | :--- |
+| **Network Name** | BOT Chain | BOT Chain Testnet (Bohr) |
+| **Chain ID** | **`677`** | `968` |
+| **RPC Endpoint** | `https://rpc.botchain.ai` | `https://rpc.bohr.life` |
+| **Native Currency** | `BOT` (18 decimals) | `BOT` (18 decimals) |
+| **Total Token Supply** | 150,000,000 BOT | 150,000,000 BOT |
+| **Block Explorer** | [https://scan.botchain.ai/](https://scan.botchain.ai/) | [https://scan.bohr.life/](https://scan.bohr.life/) |
+| **Deployed Contract** | [`0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa) | [`0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB`](https://scan.bohr.life/address/0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB) |
 
 BOT Chain offers high transaction throughput and sub-second block times, making micro-state updates (such as label changes and contact additions) instantaneous and negligible in transaction cost.
 
@@ -225,3 +226,4 @@ AddressGuard bridges the critical gap between raw cryptographic addressing and h
 - **BOT Chain Official:** [https://bohr.life/](https://bohr.life/)
 - **BohrScan Block Explorer:** [https://scan.bohr.life/](https://scan.bohr.life/)
 - **EIP-55: Mixed-case checksum address encoding:** [https://eips.ethereum.org/EIPS/eip-55](https://eips.ethereum.org/EIPS/eip-55)
+

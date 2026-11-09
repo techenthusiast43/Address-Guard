@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useAccount, useDisconnect } from 'wagmi';
 import { useAppKit } from '@reown/appkit/react';
 import { Shield, ShieldAlert, Settings, ExternalLink, LogOut, Check, Copy } from 'lucide-react';
-import { bohrTestnet } from '../config/chain';
 
 export default function Header({
   contractAddress,
   setContractAddress,
   isCorrectNetwork,
   switchChain,
+  explorerUrl = 'https://scan.botchain.ai',
+  isMainnet = true,
+  chainId,
 }) {
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
@@ -62,17 +64,21 @@ export default function Header({
               className={`w-2 h-2 rounded-full ${
                 isConnected
                   ? isCorrectNetwork
-                    ? 'bg-emerald-400 shadow-sm shadow-emerald-400'
+                    ? isMainnet
+                      ? 'bg-emerald-400 shadow-sm shadow-emerald-400 ring-2 ring-emerald-500/20'
+                      : 'bg-teal-400'
                     : 'bg-amber-400 animate-pulse'
                   : 'bg-slate-500'
               }`}
             />
-            <span className="text-slate-300 font-mono">
+            <span className="text-slate-300 font-mono font-medium">
               {isConnected
                 ? isCorrectNetwork
-                  ? 'BOT Testnet (968)'
+                  ? isMainnet
+                    ? 'BOT Mainnet (677)'
+                    : 'BOT Testnet (968)'
                   : 'Wrong Network'
-                : 'BOT Chain (968)'}
+                : 'BOT Mainnet (677)'}
             </span>
           </div>
 
@@ -114,11 +120,11 @@ export default function Header({
                   )}
                 </button>
                 <a
-                  href={`https://scan.bohr.life/address/${address}`}
+                  href={`${explorerUrl}/address/${address}`}
                   target="_blank"
                   rel="noreferrer"
                   className="p-1.5 text-slate-400 hover:text-white rounded hover:bg-slate-700/60 transition"
-                  title="View on BohrScan"
+                  title="View on Explorer"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
@@ -167,12 +173,12 @@ export default function Header({
                 Update
               </button>
               <a
-                href={`https://scan.bohr.life/address/${contractAddress}`}
+                href={`${explorerUrl}/address/${contractAddress}`}
                 target="_blank"
                 rel="noreferrer"
                 className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded font-medium flex items-center gap-1 transition"
               >
-                <span>BohrScan</span>
+                <span>Explorer</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
               <button
@@ -189,4 +195,3 @@ export default function Header({
     </header>
   );
 }
-

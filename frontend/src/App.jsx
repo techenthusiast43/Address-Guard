@@ -15,6 +15,9 @@ export default function App() {
     userAddress,
     isConnected,
     isCorrectNetwork,
+    isMainnet,
+    chainId,
+    explorerUrl,
     switchChain,
     contractAddress,
     setContractAddress,
@@ -51,6 +54,9 @@ export default function App() {
         setContractAddress={setContractAddress}
         isCorrectNetwork={isCorrectNetwork}
         switchChain={switchChain}
+        explorerUrl={explorerUrl}
+        isMainnet={isMainnet}
+        chainId={chainId}
       />
 
       {/* Main Content Area */}
@@ -82,7 +88,7 @@ export default function App() {
                   Connect MetaMask / EVM Wallet
                 </button>
                 <a
-                  href="https://scan.bohr.life/"
+                  href={explorerUrl || "https://scan.botchain.ai"}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-300 text-xs font-semibold border border-slate-700/80 flex items-center justify-center gap-2 transition"
@@ -102,7 +108,7 @@ export default function App() {
                   Connected to the wrong network
                 </h3>
                 <p className="text-xs text-amber-200/80 mt-0.5">
-                  AddressGuard operates on BOT Chain Testnet (Chain ID 968). Please switch networks to view and manage your addresses.
+                  AddressGuard operates on BOT Chain (Chain ID 677). Please switch networks to view and manage your addresses.
                 </p>
               </div>
             </div>
@@ -120,6 +126,7 @@ export default function App() {
           <AddressVerificationPanel
             verifyAddress={verifyAddress}
             onQuickAdd={handleQuickAdd}
+            explorerUrl={explorerUrl}
           />
         </section>
 
@@ -146,6 +153,7 @@ export default function App() {
                 activeCategory={activeCategory}
                 onSelectCategory={setActiveCategory}
                 isWritePending={isWritePending}
+                explorerUrl={explorerUrl}
               />
             </section>
           </>
@@ -165,6 +173,7 @@ export default function App() {
       <TxNotification
         notification={notification}
         onDismiss={dismissNotification}
+        explorerUrl={explorerUrl}
       />
 
       {/* Footer */}
@@ -173,18 +182,22 @@ export default function App() {
           <div className="flex items-center gap-2">
             <span className="font-semibold text-slate-400">AddressGuard</span>
             <span>&bull;</span>
-            <span>BOT Chain Testnet (Chain ID: 968)</span>
+            <span>
+              {isMainnet
+                ? 'BOT Chain Mainnet (Chain ID: 677)'
+                : 'BOT Chain Testnet (Chain ID: 968)'}
+            </span>
           </div>
           <div className="flex items-center gap-4">
             <span className="font-mono text-slate-400">Total Supply: 150M BOT</span>
             <span>&bull;</span>
             <a
-              href="https://scan.bohr.life/"
+              href={explorerUrl || "https://scan.botchain.ai"}
               target="_blank"
               rel="noreferrer"
               className="text-teal-400 hover:text-teal-300 transition flex items-center gap-1"
             >
-              <span>BohrScan Explorer</span>
+              <span>{isMainnet ? 'BotScan Explorer' : 'BohrScan Explorer'}</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
@@ -193,4 +206,3 @@ export default function App() {
     </div>
   );
 }
-

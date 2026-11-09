@@ -1,7 +1,11 @@
 import React from 'react';
 import { Loader2, CheckCircle2, AlertCircle, ExternalLink, X } from 'lucide-react';
 
-export default function TxNotification({ notification, onDismiss }) {
+export default function TxNotification({
+  notification,
+  onDismiss,
+  explorerUrl = 'https://scan.botchain.ai',
+}) {
   if (!notification) return null;
 
   const { type, title, message, hash } = notification;
@@ -48,12 +52,12 @@ export default function TxNotification({ notification, onDismiss }) {
                 Tx: {hash.slice(0, 10)}...{hash.slice(-8)}
               </span>
               <a
-                href={`https://scan.bohr.life/tx/${hash}`}
+                href={`${explorerUrl}/tx/${hash}`}
                 target="_blank"
                 rel="noreferrer"
                 className="text-[11px] text-teal-400 hover:text-teal-300 flex items-center gap-0.5 ml-auto font-medium"
               >
-                <span>View on BohrScan</span>
+                <span>View on Explorer</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>

@@ -14,6 +14,7 @@ import {
 export default function AddressVerificationPanel({
   verifyAddress,
   onQuickAdd,
+  explorerUrl = 'https://scan.botchain.ai',
 }) {
   const [inputAddress, setInputAddress] = useState('');
   const [copied, setCopied] = useState(false);
@@ -128,11 +129,11 @@ export default function AddressVerificationPanel({
                     )}
                   </button>
                   <a
-                    href={`https://scan.bohr.life/address/${result.address}`}
+                    href={`${explorerUrl}/address/${result.address}`}
                     target="_blank"
                     rel="noreferrer"
                     className="p-1 hover:text-white rounded hover:bg-emerald-500/20 transition"
-                    title="View on BohrScan"
+                    title="View on Explorer"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
@@ -183,11 +184,11 @@ export default function AddressVerificationPanel({
                     )}
                   </button>
                   <a
-                    href={`https://scan.bohr.life/address/${result.address}`}
+                    href={`${explorerUrl}/address/${result.address}`}
                     target="_blank"
                     rel="noreferrer"
                     className="p-1 hover:text-white rounded hover:bg-amber-500/20 transition"
-                    title="View on BohrScan"
+                    title="View on Explorer"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>

@@ -1,20 +1,29 @@
 # AddressGuard 🛡️ — Trusted Wallet Address Manager
 
-**AddressGuard** is a lightweight, non-custodial Web3 dApp built on the **BOT Chain** network. It functions as a personal on-chain address book where users can save, label, organize, search, and verify destination wallet addresses before transferring cryptocurrency.
+**AddressGuard** is a lightweight, non-custodial Web3 dApp built natively on the **BOT Chain** network. It functions as a personal on-chain address book where users can save, label, organize, search, and verify destination wallet addresses before transferring cryptocurrency.
 
 ---
 
-## 🌐 Network Parameters (BOT Chain Testnet)
+## 🌐 Network Parameters
 
+### 🚀 BOT Chain Mainnet
 | Parameter | Value |
 | :--- | :--- |
-| **Network Name** | BOT Chain Testnet (Bohr) |
-| **Chain ID** | `968` |
-| **RPC URL** | `https://rpc.bohr.life` |
+| **Network Name** | **BOT Chain** |
+| **Chain ID** | **`677`** |
+| **RPC URL** | `https://rpc.botchain.ai` |
 | **Native Token** | `BOT` (18 Decimals) |
 | **Total Supply** | 150 Million |
+| **Block Explorer** | [https://scan.botchain.ai/](https://scan.botchain.ai/) |
+| **Mainnet Contract** | [`0xbC40237702cCA86cC09231c3951271e47DDCC1Aa`](https://scan.botchain.ai/address/0xbC40237702cCA86cC09231c3951271e47DDCC1Aa) |
+
+### 🧪 BOT Chain Testnet (Bohr)
+| Parameter | Value |
+| :--- | :--- |
+| **Chain ID** | `968` |
+| **RPC URL** | `https://rpc.bohr.life` |
 | **Block Explorer** | [https://scan.bohr.life/](https://scan.bohr.life/) |
-| **Deployed Contract** | [`0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB`](https://scan.bohr.life/address/0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB) |
+| **Testnet Contract** | [`0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB`](https://scan.bohr.life/address/0xB42DD3529DEF5c2e59142ffCF3a535c8a2f4CaEB) |
 
 ---
 
@@ -32,7 +41,7 @@
    - 🟡 **Valid but Not Saved**: Displays warning with a quick 1-click shortcut to add the address.
    - 🔴 **Invalid Address**: Flags malformed addresses to prevent accidental fund loss.
 8. **Real-Time Search & Category Filters**: Filter saved addresses instantly by text or category tabs.
-9. **Transaction Feedback**: Real-time status toasts with direct links to BohrScan transaction hashes.
+9. **Transaction Feedback**: Real-time status toasts with direct links to BotScan transaction hashes.
 10. **1-Click Copy**: Instant address clipboard copy with visual feedback.
 
 ---
@@ -46,8 +55,8 @@ address-guard/
 ├── test/
 │   └── AddressGuard.test.js       # Hardhat test suite (13/13 passing)
 ├── scripts/
-│   └── deploy.js                  # Deployment script for BOT Chain
-├── hardhat.config.js              # Hardhat configuration with BOT Chain network
+│   └── deploy.js                  # Deployment script for BOT Chain Mainnet & Testnet
+├── hardhat.config.js              # Hardhat configuration (Chain ID: 677 & 968)
 ├── package.json                   # Root dependencies (Hardhat, Toolbox)
 ├── frontend/
 │   ├── index.html
@@ -59,10 +68,10 @@ address-guard/
 │       ├── main.jsx               # App entrypoint (Wagmi + React Query)
 │       ├── index.css              # Dark theme styling & scrollbars
 │       ├── config/
-│       │   ├── chain.js           # BOT Chain (Chain ID: 968) definition
+│       │   ├── chain.js           # BOT Chain Mainnet (677) & Testnet (968)
 │       │   └── web3.js            # Reown AppKit & WagmiAdapter setup
 │       ├── contracts/
-│       │   └── AddressGuard.json  # Contract ABI & active address
+│       │   └── AddressGuard.json  # Mainnet Contract ABI & live address
 │       ├── hooks/
 │       │   └── useAddressGuard.js # Web3 reactive state hook
 │       └── components/
@@ -71,7 +80,7 @@ address-guard/
 │           ├── AddressVerificationPanel.jsx # Verification sandbox
 │           ├── AddressList.jsx    # Search, category filter, list & edit
 │           ├── AddAddressModal.jsx# Form to save address to BOT Chain
-│           └── TxNotification.jsx # Live transaction toast with BohrScan links
+│           └── TxNotification.jsx # Live transaction toast with BotScan links
 └── README.md
 ```
 
@@ -79,58 +88,24 @@ address-guard/
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Node.js (v18+ or v20+)
-- npm or pnpm
-
 ### 1. Compile & Test Smart Contract
 
 ```bash
-# In the project root:
-npm install
-
 # Run the test suite:
 npx hardhat test
 ```
 
-### 2. Deploy to BOT Chain Testnet
+### 2. Deploy to BOT Chain Mainnet
 
-1. Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-2. Set your deployer private key:
-   ```env
-   BOT_RPC_URL=https://rpc.bohr.life
-   PRIVATE_KEY=your_private_key_without_0x
-   ```
-3. Run the deployment script:
-   ```bash
-   npx hardhat run scripts/deploy.js --network botChain
-   ```
-   *The script will deploy `AddressGuard.sol` and automatically synchronize the deployed address and ABI to `frontend/src/contracts/AddressGuard.json`.*
-
----
+```bash
+npx hardhat run scripts/deploy.js --network botChainMainnet
+```
 
 ### 3. Run the Frontend
 
 ```bash
 cd frontend
-
-# Install dependencies:
-npm install
-
-# Start Vite dev server:
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 🔒 Security Best Practices
-
-- **Zero-Storage of Private Keys**: AddressGuard never accesses, requests, or stores private keys or seed phrases.
-- **Client-Side Sanitization**: Addresses are sanitized and checksummed with `viem.getAddress()` before submitting on-chain.
-- **Contract Boundary**: Only `msg.sender` can view or mutate their own address list.
-

@@ -1,12 +1,42 @@
 import { defineChain } from 'viem';
 
 /**
- * BOT Chain Testnet (Bohr) Network Definition
- * Chain ID: 968
- * RPC: https://rpc.bohr.life
+ * BOT Chain Mainnet Definition
+ * Chain ID: 677
+ * RPC: https://rpc.botchain.ai
  * Native Token: BOT
  * Total Supply: 150 Million
- * Explorer: https://scan.bohr.life/
+ * Explorer: https://scan.botchain.ai
+ */
+export const botChainMainnet = defineChain({
+  id: 677,
+  name: 'BOT Chain',
+  nativeCurrency: {
+    name: 'BOT',
+    symbol: 'BOT',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://rpc.botchain.ai'],
+    },
+    public: {
+      http: ['https://rpc.botchain.ai'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'BotScan',
+      url: 'https://scan.botchain.ai',
+    },
+  },
+  testnet: false,
+});
+
+/**
+ * BOT Chain Testnet (Bohr)
+ * Chain ID: 968
+ * RPC: https://rpc.bohr.life
  */
 export const bohrTestnet = defineChain({
   id: 968,
@@ -33,3 +63,5 @@ export const bohrTestnet = defineChain({
   testnet: true,
 });
 
+// Primary default network is Mainnet
+export const defaultChain = botChainMainnet;

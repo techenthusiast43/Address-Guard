@@ -19,6 +19,15 @@ if (fs.existsSync(envPath)) {
 
 require("@nomicfoundation/hardhat-toolbox");
 
+const accounts =
+  process.env.PRIVATE_KEY && process.env.PRIVATE_KEY !== "your_private_key_here"
+    ? [
+        process.env.PRIVATE_KEY.startsWith("0x")
+          ? process.env.PRIVATE_KEY
+          : `0x${process.env.PRIVATE_KEY}`,
+      ]
+    : [];
+
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
@@ -33,16 +42,19 @@ module.exports = {
   networks: {
     hardhat: {},
     botChain: {
-      url: process.env.BOT_RPC_URL || "https://rpc.bohr.life",
+      url: process.env.BOT_RPC_URL || "https://rpc.botchain.ai",
+      chainId: Number(process.env.BOT_CHAIN_ID) || 677,
+      accounts,
+    },
+    botChainMainnet: {
+      url: "https://rpc.botchain.ai",
+      chainId: 677,
+      accounts,
+    },
+    botChainTestnet: {
+      url: "https://rpc.bohr.life",
       chainId: 968,
-      accounts:
-        process.env.PRIVATE_KEY && process.env.PRIVATE_KEY !== "your_private_key_here"
-          ? [
-              process.env.PRIVATE_KEY.startsWith("0x")
-                ? process.env.PRIVATE_KEY
-                : `0x${process.env.PRIVATE_KEY}`,
-            ]
-          : [],
+      accounts,
     },
   },
   paths: {

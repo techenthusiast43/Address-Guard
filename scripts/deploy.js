@@ -3,16 +3,23 @@ const fs = require("fs");
 const path = require("path");
 
 async function main() {
-  console.log("----------------------------------------------------");
-  console.log("Deploying AddressGuard to network:", hre.network.name);
-  console.log("Chain ID:", hre.network.config.chainId || 31337);
-  console.log("----------------------------------------------------");
+  const chainId = Number(hre.network.config.chainId) || 677;
+  const isMainnet = chainId === 677;
+  const explorerUrl = isMainnet
+    ? "https://scan.botchain.ai"
+    : "https://scan.bohr.life";
+
+  console.log("====================================================");
+  console.log("Deploying AddressGuard to:", hre.network.name);
+  console.log("Target Chain ID:", chainId, isMainnet ? "(BOT Chain MAINNET)" : "(Testnet)");
+  console.log("Explorer:", explorerUrl);
+  console.log("====================================================");
 
   const [deployer] = await hre.ethers.getSigners();
   if (deployer) {
     const balance = await hre.ethers.provider.getBalance(deployer.address);
-    console.log("Deployer:", deployer.address);
-    console.log("Balance:", hre.ethers.formatEther(balance), "BOT");
+    console.log("Deployer Address:", deployer.address);
+    console.log("Deployer Balance:", hre.ethers.formatEther(balance), "BOT");
   }
 
   const AddressGuard = await hre.ethers.getContractFactory("AddressGuard");
@@ -21,20 +28,21 @@ async function main() {
   await addressGuard.waitForDeployment();
   const contractAddress = await addressGuard.getAddress();
 
-  console.log(">>> AddressGuard successfully deployed to:", contractAddress);
-  console.log(">>> Explorer Link: https://scan.bohr.life/address/" + contractAddress);
+  console.log("\n>>> SUCCESS! AddressGuard deployed to:", contractAddress);
+  console.log(">>> Explorer Link:", `${explorerUrl}/address/${contractAddress}`);
 
-  // Sync contract address and ABI to frontend if directory exists
+  // Sync contract address and ABI to frontend
   const frontendConfigDir = path.join(__dirname, "..", "frontend", "src", "contracts");
   if (!fs.existsSync(frontendConfigDir)) {
     fs.mkdirSync(frontendConfigDir, { recursive: true });
   }
 
   const contractArtifact = await hre.artifacts.readArtifact("AddressGuard");
-  
+
   const deployedInfo = {
     address: contractAddress,
-    chainId: hre.network.config.chainId || 968,
+    chainId: chainId,
+    explorer: explorerUrl,
     abi: contractArtifact.abi,
   };
 
@@ -43,11 +51,22 @@ async function main() {
     JSON.stringify(deployedInfo, null, 2)
   );
 
-  console.log(">>> Contract config written to frontend/src/contracts/AddressGuard.json");
+  // Also update frontend/.env
+  const frontendEnvPath = path.join(__dirname, "..", "frontend", ".env");
+  if (fs.existsSync(frontendEnvPath)) {
+    let fe = fs.readFileSync(frontendEnvPath, "utf-8");
+    if (fe.includes("VITE_CONTRACT_ADDRESS=")) {
+      fe = fe.replace(/VITE_CONTRACT_ADDRESS=.*/, `VITE_CONTRACT_ADDRESS=${contractAddress}`);
+    } else {
+      fe += `\nVITE_CONTRACT_ADDRESS=${contractAddress}`;
+    }
+    fs.writeFileSync(frontendEnvPath, fe);
+  }
+
+  console.log(">>> Contract config written to frontend/src/contracts/AddressGuard.json and frontend/.env\n");
 }
 
 main().catch((error) => {
   console.error("Deployment failed:", error);
   process.exitCode = 1;
 });
-
